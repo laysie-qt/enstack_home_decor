@@ -1,0 +1,61 @@
+<div class="signup-container">
+    <div class="signup-header">
+        <img src="/assets/image/rectangle.svg" class="small-rectangle" alt="Small Rectangle">
+        <img src="/assets/image/chair-grp.svg" class="chair-icon" alt="Chair Icon">
+        <img src="/assets/image/rectangle.svg" class="small-rectangle" alt="Small Rectangle">
+    </div>
+
+    <h1 class="signup-title">Create Account</h1>
+
+    <form [formGroup]="signupForm" (ngSubmit)="onSignup()" class="signup-form">
+        <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Name</mat-label>
+            <mat-icon matPrefix>person</mat-icon>
+            <input matInput formControlName="name" type="text" required />
+            <mat-error *ngIf="signupForm.controls['name'].hasError('required')">
+                Name is required.
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Email</mat-label>
+            <mat-icon matPrefix>mail</mat-icon>
+            <input matInput formControlName="email" type="email" required />
+            <mat-error *ngIf="signupForm.controls['email'].hasError('email')">
+                Please enter a valid email.
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Password</mat-label>
+            <mat-icon matPrefix>lock</mat-icon>
+            <input matInput formControlName="password" type="password" required />
+            <mat-error *ngIf="signupForm.controls['password'].hasError('required')">
+                Password is required.
+            </mat-error>
+            <mat-error *ngIf="signupForm.controls['password'].hasError('pattern')">
+                Password must be at least 8 characters, include one uppercase letter, one number, one special character, and must not contain "*".
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Confirm Password</mat-label>
+            <mat-icon matPrefix>lock</mat-icon>
+            <input matInput formControlName="confirmPassword" type="password" required />
+            <mat-error *ngIf="signupForm.controls['confirmPassword'].hasError('required')">
+                Confirm Password is required.
+            </mat-error>
+            <mat-error *ngIf="signupForm.hasError('passwordMismatch')">
+                Passwords do not match.
+            </mat-error>
+        </mat-form-field>
+
+        <div class="form-actions">
+            <button mat-raised-button color="primary" type="submit" [disabled]="signupForm.invalid">
+                Sign Up
+            </button>
+        </div>
+
+        <div class="sign-in">Already have an account? <span (click)="navigateToLogin()">Sign in</span></div>
+    </form>
+</div>

@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="title-bar">
+    <img src="assets/image/search-icon.svg" alt="Search" class="icon" />
+    <h1 class="title">Make Home Beautiful</h1>
+    
+    <div class="account-container">
+      <img src="assets/image/account.svg" alt="Account" class="icon" />
+      <span class="welcome-message">Welcome, {{ userName || 'Guest' }}!</span>
+    </div>
+    <div class="cart-container" (click)="navigateToMyCart()">
+      <img src="assets/image/cart-icon.svg" alt="Cart" class="icon" />
+      <span class="cart-count">{{ getCartCount() }}</span>
+    </div>
+  </div>
+
+  <div class="category-icons">
+    <div class="category" *ngFor="let category of categories" 
+         [class.selected]="selectedCategory === category.type" 
+         (click)="filterByCategory(category.type)">
+      <img [src]="category.icon" alt="{{ category.name }}" class="category-icon" />
+      <span>{{ category.name }}</span>
+    </div>
+  </div>
+
+  <div class="product-list">
+    <div class="product-card" *ngFor="let product of filteredProducts" (click)="navigateToProductDetails(product)">
+      <div class="product-image">
+        <img [src]="product.main_image" alt="{{ product.name }}" class="product-img" />
+        <button (click)="addToCart(product); $event.stopPropagation()" class="add-to-cart">
+          <img src="assets/image/shopping_bag icon.svg" alt="Add to Cart" />
+        </button>
+      </div>
+      <div class="product-info">
+        <h3>{{ product.name }}</h3>
+        <p class="price">${{ product.price| number: '1.0-0' }}</p>
+      </div>
+    </div>
+  </div>
+</div>

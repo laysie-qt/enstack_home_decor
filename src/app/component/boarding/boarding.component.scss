@@ -1,0 +1,126 @@
+.boarding-container {
+  background: url('/assets/image/boarding.png') no-repeat center center/cover;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  padding: 96px 32px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.boarding-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); 
+  z-index: 1;
+}
+
+.content {
+  max-width: 311px; 
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: relative;
+  z-index: 2;
+}
+
+.boarding-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 38.4px;
+  color: #fff;
+  width: 266px;
+  animation: fadeInTitle 1s ease-out;
+}
+
+.boarding-text {
+  width: 318px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  color: #fff;
+  opacity: 0;
+  animation: fadeInText 1.5s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+.boarding-button {
+  width: 311px;
+  height: 54px;
+  background-color: #000000;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+}
+
+.boarding-button:hover {
+  background-color: #303030;
+}
+
+.boarding-button::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 100%;
+  height: 3px;
+  background-color: #fff;
+  transform: translateX(-50%) scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.boarding-button:hover::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+@keyframes fadeInTitle {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInText {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 768px) {
+  .boarding-container {
+    justify-content: flex-start;
+    padding-left: 10%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .content {
+    max-width: 400px;
+  }
+}

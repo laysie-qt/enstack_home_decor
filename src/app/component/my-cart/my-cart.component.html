@@ -1,0 +1,31 @@
+<div class="cart-container">
+    <div class="title-bar">
+      <button class="back-button" (click)="goBack()">&#8592; Back</button>
+      <h1 class="title">My Cart</h1>
+    </div>
+    <div *ngFor="let product of cart; let i = index" class="cart-item">
+      <img [src]="product.main_image" alt="{{ product.name }}" />
+      <div class="product-details">
+        <h3>{{ product.name }}</h3>
+        <p class="price">${{ product.price| number: '1.0-0' }}</p>
+      </div>
+      <div class="quantity">
+        <button (click)="changeQuantity(i, -1)">&#8722;</button>
+        <span>{{ product.quantity }}</span>
+        <button (click)="changeQuantity(i, 1)" [disabled]="product.quantity >= product.stock">&#43;</button>
+      </div>
+      <button class="remove-button" (click)="removeFromCart(i)">
+        <span class="remove-icon">&#10005;</span>
+      </button>
+    </div>
+  
+    <div class="promo-code">
+      <input type="text" placeholder="Enter promo code" [(ngModel)]="promoCode" />
+      <button (click)="applyPromoCode()">Apply</button>
+    </div>
+  
+    <div class="total">
+      <p>Total: ${{ totalPrice.toFixed(2)| number: '1.0-0' }}</p>
+      <button class="checkout-button" (click)="checkout()">Checkout</button>
+    </div>
+  </div>
