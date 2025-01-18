@@ -104,7 +104,7 @@ export const products: Product[] = [{
 ];
 
 export const categories: Category[] = [
-  { name: 'Trending Now', type: 'trending', icon: '/assets/image/Poplular.png' },
+  { name: 'Trending Now', type: 'popular', icon: '/assets/image/Poplular.png' },
   { name: 'Chairs & Stools', type: 'chair', icon: '/assets/image/Chair-category.svg' },
   { name: 'Tables & Desks', type: 'table', icon: '/assets/image/Table-category.svg' },
   { name: 'Comfort Armchairs', type: 'armchair', icon: '/assets/image/Armchair-category.svg' },

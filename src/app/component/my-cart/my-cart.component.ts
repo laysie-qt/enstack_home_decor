@@ -72,7 +72,7 @@ export class MyCartComponent {
     this.totalPrice = total;
   }
   checkout() {
-    alert('Checkout successful!');
+    alert('Checkout successful! Your order will be delivered soon.Thank you for choosing our app!');
     this.router.navigate(['/main']);
     localStorage.removeItem('cart');
   }
